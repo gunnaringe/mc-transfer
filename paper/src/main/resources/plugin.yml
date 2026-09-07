@@ -1,0 +1,24 @@
+name: mc-transfer
+version: ${project.version}
+main: xyz.haxxor.mctransfer.paper.McTransferPaper
+api-version: '26.2'
+author: gunnaringe
+description: Portal and button driven transfers between backend servers
+
+commands:
+  transfer:
+    description: Register portals and move players between servers
+    usage: |-
+      /transfer register <server> [x y z [yaw pitch]]
+      /transfer unregister
+      /transfer list
+      /transfer listservers
+      /transfer send <target> <server> [x y z [yaw pitch]]
+
+permissions:
+  mctransfer.manage:
+    description: Create, remove and list portals on this server
+    default: op
+  mctransfer.send:
+    description: Trigger a transfer, including from a command block behind a button
+    default: true

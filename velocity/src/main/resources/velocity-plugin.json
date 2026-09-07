@@ -1,0 +1,9 @@
+{
+  "id": "mctransfer",
+  "name": "mc-transfer",
+  "version": "1.0.0",
+  "description": "Portal and button driven transfers between backend servers",
+  "authors": ["gunnaringe"],
+  "dependencies": [],
+  "main": "xyz.haxxor.mctransfer.velocity.McTransferVelocity"
+}

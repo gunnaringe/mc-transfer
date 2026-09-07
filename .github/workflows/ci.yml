@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          # The paper module compiles against paper-api, whose class files are Java 25
+          # (major version 69) - nothing older can even load it as a dependency. Building the
+          # whole reactor under 25 is simplest, since javac --release can still target the
+          # common/velocity modules' lower release from a newer JDK.
+          java-version: "25"
+          cache: maven
+      - run: mvn -B verify

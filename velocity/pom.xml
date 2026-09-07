@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>xyz.haxxor.mctransfer</groupId>
+        <artifactId>mc-transfer-parent</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>mc-transfer-velocity</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>xyz.haxxor.mctransfer</groupId>
+            <artifactId>mc-transfer-common</artifactId>
+        </dependency>
+        <!-- 3.4.0 rather than something matching the deployed 4.x proxy, matching the choice
+             velocity-access already makes and proves in production: a plugin built against the
+             3.4.0 public API runs fine on the 4.1.2 proxy. What actually broke the plugin this
+             one replaces was reflecting into Velocity's internals, not the API level it targeted,
+             so everything here sticks to public API only. -->
+        <dependency>
+            <groupId>com.velocitypowered</groupId>
+            <artifactId>velocity-api</artifactId>
+            <version>${velocity.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>mc-transfer-velocity</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <!-- velocity-api ships an annotation processor that would generate
+                         velocity-plugin.json from @Plugin, but it is compiled as Java 25 class
+                         files and blows up on older toolchains. The json is hand-written in
+                         resources/ instead, so processing can be off entirely and the build does
+                         not care which JDK runs it. -->
+                    <proc>none</proc>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <createDependencyReducedPom>false</createDependencyReducedPom>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
