@@ -1,0 +1,4 @@
+[hooks]
+fmt = "mvn spotless:apply"
+lint = "mvn spotless:check"
+test = "mvn -q test"
