@@ -19,4 +19,6 @@ jobs:
           # common/velocity modules' lower release from a newer JDK.
           java-version: "25"
           cache: maven
+      - uses: jdx/mise-action@v2
+      - run: prek run --hook-stage=commit
       - run: mvn -B verify
