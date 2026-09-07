@@ -1,0 +1,9 @@
+repos:
+  - repo: local
+    hooks:
+      - id: maven-verify
+        name: maven verify
+        entry: mvn -q verify
+        language: system
+        stages: [commit]
+        pass_filenames: false
