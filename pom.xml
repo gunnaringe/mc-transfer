@@ -21,7 +21,7 @@
              ship Java 25 class files), so 21 here is a safety margin, not a hard requirement.
              The paper module overrides this to 25 - see its pom for why it has no choice. -->
         <maven.compiler.release>21</maven.compiler.release>
-        <velocity.version>3.4.0</velocity.version>
+        <velocity.version>4.3.1</velocity.version>
         <!-- Matches the deployed backends exactly (Paper 26.2-121). -->
         <paper.version>26.2.build.121-stable</paper.version>
         <junit.version>5.11.3</junit.version>
