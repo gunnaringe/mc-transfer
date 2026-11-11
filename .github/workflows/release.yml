@@ -18,7 +18,7 @@ jobs:
           java-version: "25"
           cache: maven
       - run: mvn -B verify
-      - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@v3
         with:
           files: |
             velocity/target/mc-transfer-velocity.jar
