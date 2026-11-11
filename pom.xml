@@ -25,7 +25,7 @@
         <!-- Matches the deployed backends exactly (Paper 26.2-121). -->
         <paper.version>26.2.build.121-stable</paper.version>
         <junit.version>5.11.3</junit.version>
-        <assertj.version>3.26.3</assertj.version>
+        <assertj.version>3.27.7</assertj.version>
     </properties>
 
     <repositories>
