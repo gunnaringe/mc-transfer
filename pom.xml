@@ -23,7 +23,7 @@
         <maven.compiler.release>21</maven.compiler.release>
         <velocity.version>4.3.1</velocity.version>
         <!-- Matches the deployed backends exactly (Paper 26.2-121). -->
-        <paper.version>26.3.build.244-stable</paper.version>
+        <paper.version>26.3.build.246-stable</paper.version>
         <junit.version>6.1.3</junit.version>
         <assertj.version>3.27.7</assertj.version>
     </properties>
